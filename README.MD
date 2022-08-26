@@ -12,26 +12,16 @@
 
 ### 技术栈
 
+#### 项目依赖 : 
+> ✅ node ✅ pnpm
+
 #### 前端 : 
 
-✅ vue3.2  
-
-✅ vite
-
-✅ vant3  
-
-✅ axios  
-
-✅ pinia  
-
-✅ sass  
+> ✅ vue3.2  ✅ vite ✅ vant3  ✅ axios  ✅ pinia  ✅ sass  
 
 #### 后端 : 
 
-✅ express  
-
-✅ mysql  
-
+> ✅ express  ✅ mysql ✅ nodemon
 
 
 ### 目录
@@ -53,11 +43,11 @@ pnpm run dev #启动项目
 #### 启动命令
 
 ```sh
-npm install # 安装依赖 
+pnpm install # 安装依赖 
 ```
 
 ```sh
-node index.js # 启动项目 
+pnpm run dev # 启动项目 
 ```
 
 
