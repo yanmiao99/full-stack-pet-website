@@ -1,7 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let connection = require('../db/index.js')
-
+// let connection = require('../db/index.js')
 
 // 测试接口
 router.get('/', (req, res) => {
@@ -30,25 +29,5 @@ router.post("/postForm", (req, res) => {
     // 配置了 app.use(express.urlencoded())  之后, 则可以使用 req.body 接受 post 传递过来的 urlencoded 格式数据
     res.send(req.body)
 })
-
-
-// //实现增加功能
-// router.post('/add', (req, res) => {
-//     // 插入数据
-//     const name = req.query.name;
-//     const age = req.query.age;
-//     // sql查询语句
-//     const sql = 'insert into user(id,name,age) values(0,?,?)'
-//     // 如果添加多个数据的话，用 [] 括起来
-//     connection.query(sql, [name, age], function (err, result) {
-//         if (err) {
-//             res.send({err: '添加失败'})
-//             return;
-//         }
-//         // res.send({message:'添加成功'})
-//         res.send({message: '添加成功'})
-//     })
-// });
-
 
 module.exports = router;
