@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const routerTest = require('./routes/test.js')
+const routerDBTest = require("./routes/dbTest.js")
 const router = require("./routes/index.js")
 const {port} = require("./config/index.js")
 const cors = require("cors")
@@ -12,6 +13,7 @@ app.use(cors()) // 解决跨域
 
 // 路由
 app.use('/test', routerTest);
+app.use("/dbTest", routerDBTest)
 app.use("/api", router)
 
 // 静态资源
