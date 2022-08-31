@@ -47,8 +47,8 @@ router.post('/add', (req, res) => {
     // 插入数据
     const name = req.body.name;
     const age = req.body.age;
-    // sql查询语句
-    const sql = 'insert into user(id,name,age) values(4,?,?)'
+    // sql查询语句  ( id 如果是自增则默认值可以填写 null)
+    const sql = 'insert into user(id,name,age) values(null,?,?)'
     // 如果添加多个数据的话，用 [] 括起来
     connection.query(sql, [name, age], (err, result) => {
         if (err) {
@@ -57,9 +57,17 @@ router.post('/add', (req, res) => {
             })
             return;
         }
-        res.send({
-            message: '添加成功', code: 200, data: {}
-        })
+
+        // 判断是否插入成功 , 如果插入成功了. 则会返回 1
+        if (result.affectedRows === 1) {
+            res.send({
+                message: '添加成功', code: 200, data: {}
+            })
+        } else {
+            res.send({
+                code: 400, data: {}, msg: '添加失败'
+            })
+        }
     })
 });
 
