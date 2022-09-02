@@ -18,11 +18,14 @@ SELECT * name age FORM user
 
 #### INSERT 插入
 ```mysql
--- 第一种方式 ( 指定默认值 )
+-- 第一种方式 ( 指定值 )
 INSERT INTO user (name,age) values ('张三',18)
     
 -- 第二种方式 ( 不指定默认值 )
 INSERT INTO user(name,age) values(?,?) 
+
+-- 第三种方式 ( 插入一个对象 )
+INSERT INTO user SET ?
 ```
 
 #### UPDATE 更新
@@ -36,7 +39,12 @@ UPDATE user SET name='测试',age='18' WHERE id=4
 
 #### DELETE 删除
 ```mysql
+-- 硬删除
 DELETE FROM user where id = 1
+
+-- 软删除
+UPDATE user SET isDelete = 1 WHERE id = 1
+
 ```
 
 #### AND 和 OR  与和或
