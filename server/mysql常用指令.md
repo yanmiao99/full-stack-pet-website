@@ -8,6 +8,12 @@ SELECT * FORM user
 
 -- 查询指定列 
 SELECT * name age FORM user
+
+-- 条件查询 
+select *
+from user
+where name = ?
+  and password = ?
 ```
 
 #### INSERT 插入
