@@ -32,11 +32,14 @@ router.post('/login', (req, res) => {
     // 3. 登陆成功, 生成token
     /**
          * sign 签名参数说明 :
-         * 参数一 : 用户信息对象
+         * 参数一 : 用户信息对象 , 这里携带的信息 , 可以在需要鉴权才能访问的接口中使用 req.auth 获取
          * 参数二 : secretKey , 加密的秘钥
          * 参数三 : options , 额外的配置信息, 一般会输入过期时间  expiresIn
          */
-    const token = jwt.sign({ ...result }, secretKey, { expiresIn: '1m' })
+    const token = jwt.sign({
+      name: result.name,
+      age: result.age
+    }, secretKey, { expiresIn: '1h' })
 
     // 4. 返回信息给客户端
 
