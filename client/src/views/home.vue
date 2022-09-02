@@ -24,19 +24,18 @@
 </template>
 
 <script setup>
-const tabActive = $ref(0);
-const tabBarActive = $ref(0);
-const list = $ref([]);
+const tabActive = $ref(0)
+const tabBarActive = $ref(0)
+const list = $ref([])
 const getTestData = async () => {
   const baseURL = 'https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=statisGradeCityDetail,diseaseh5Shelf'
   const res = await $request.get(baseURL)
 
-  let childrenList = res.data.data.diseaseh5Shelf.areaTree[0].children
+  const childrenList = res.data.data.diseaseh5Shelf.areaTree[0].children
 
   childrenList.forEach(item => {
-    list.push(item.name);
+    list.push(item.name)
   })
-
 }
 getTestData()
 
