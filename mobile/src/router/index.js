@@ -5,34 +5,42 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL), // history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      redirect: '/community'
+      path: '/', redirect: 'home/community'
     },
     {
-      path: '/community',
-      name: 'community',
-      component: () => import('../views/community.vue'),
+      path: '/home',
+      name: 'home',
+      component: () => import('../views/home.vue'),
       meta: {
-        title: '社区'
-      }
-    },
-    {
-      path: '/knowledge',
-      name: 'knowledge',
-      component: () => import('../views/knowledge.vue'),
-      meta: {
-        title: '知识'
-      }
-    },
-    {
-      path: '/me',
-      name: 'me',
-      component: () => import('../views/me.vue'),
-      meta: {
-        title: '我的'
-      }
-    }
-  ]
+        title: '主页'
+      },
+      children: [
+        {
+          path: '/home/community',
+          name: 'community',
+          component: () => import('../views/community.vue'),
+          meta: {
+            title: '社区'
+          }
+        },
+        {
+          path: '/home/knowledge',
+          name: 'knowledge',
+          component: () => import('../views/knowledge.vue'),
+          meta: {
+            title: '知识'
+          }
+        },
+        {
+          path: '/home/me',
+          name: 'me',
+          component: () => import('../views/me.vue'),
+          meta: {
+            title: '我的'
+          }
+        }
+      ]
+    }]
 })
 
 export default router
