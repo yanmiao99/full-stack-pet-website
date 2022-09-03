@@ -5,16 +5,15 @@ function getNetworkIp () {
   try {
     // 获得网络接口列表
     const network = os.networkInterfaces()
-    // console.log("network",network)
     for (const dev in network) {
       const face = network[dev]
       for (let i = 0; i < face.length; i++) {
         const alias = face[i]
         if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
           needHost = alias.address
-          // console.log("alias.address",alias.address)
+          // console.log('alias.address', alias.address)
         }
-        // console.log("alias",alias)
+        // console.log('alias', alias)
       }
     }
   } catch (e) {

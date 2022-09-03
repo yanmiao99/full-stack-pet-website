@@ -1,17 +1,18 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import App from './App.vue'
 import router from './router'
-
 import './assets/style/global.scss'
 import request from './utils/request'
-
-const app = createApp(App)
+import { Lazyload } from 'vant'
 
 window.$request = request
 
-app.use(createPinia())
-app.use(router)
+const app = createApp(App)
+
+app
+  .use(Lazyload, { lazyComponent: true }) // 懒加载
+  .use(createPinia())
+  .use(router)
 
 app.mount('#app')

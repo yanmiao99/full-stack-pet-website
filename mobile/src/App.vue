@@ -1,35 +1,34 @@
 <template>
   <div class="wrapper">
     <!-- 导航栏 -->
-    <van-tabs v-model:active="tabActive" sticky animated swipeable>
-      <van-tab v-for="item in tabList" :key="item.to">
-        <template #title>
-          <div @click="handleClickTab(item)">
+    <van-sticky>
+      <van-tabs v-model:active="tabActive" animated border color="#2B8AEC">
+        <van-tab v-for="item in tabList" :key="item.to" :to="item.to">
+          <template #title>
             <van-icon :name="item.icon" style="margin-right: 5px"/>
             <span>{{ item.title }}</span>
-          </div>
-        </template>
-      </van-tab>
-    </van-tabs>
+          </template>
+        </van-tab>
+      </van-tabs>
+    </van-sticky>
     <!-- 路由视图 -->
     <RouterView class="wrapper-body"/>
   </div>
 </template>
 
 <script setup>
-import { RouterView, useRouter } from 'vue-router'
-// import { Toast } from 'vant'
+import { RouterView } from 'vue-router'
 
 const tabList = $ref([
   {
     title: '社区',
-    icon: 'star-o',
-    to: '/knowledge'
+    icon: 'home-o',
+    to: '/community'
   },
   {
     title: '知识',
-    icon: 'like-o',
-    to: '/adopt'
+    icon: 'star-o',
+    to: '/knowledge'
   },
   {
     title: '我的',
@@ -38,22 +37,22 @@ const tabList = $ref([
   }
 ])
 const tabActive = $ref(0)
-const router = useRouter()
-const handleClickTab = (item) => {
-  console.log(item)
-  router.push(item.to)
-}
 
 </script>
 
-<style lang="scss">
-html, body {
-  background: #F3F6F8;
+<style lang="scss" scoped>
+
+// 样式穿透
+::v-deep(.van-tab--active) {
+  color: #2B8AEC;
+
+  span {
+    font-weight: bold !important;
+  }
 }
 
-.wrapper-body {
-  padding: 10px;
-  box-sizing: border-box;
+::v-deep(.van-tabs__wrap) {
+  padding-bottom: 5px;
 }
 
 </style>

@@ -6,14 +6,14 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/adopt'
+      redirect: '/community'
     },
     {
-      path: '/adopt',
-      name: 'adopt',
-      component: () => import('../views/adopt.vue'),
+      path: '/community',
+      name: 'community',
+      component: () => import('../views/community.vue'),
       meta: {
-        title: '领养'
+        title: '社区'
       }
     },
     {

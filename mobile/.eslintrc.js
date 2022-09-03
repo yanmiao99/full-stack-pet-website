@@ -16,7 +16,7 @@ module.exports = {
     'no-extra-semi': [2], // 禁止不必要的分号
     'no-undef': 'off', // 关闭未定义的检查
     'comma-dangle': [2, 'never'], // 禁止末尾逗号
-    'no-var': 0, // 禁用var，用let和const代替
+    'no-var': 2, // 禁用var，用let和const代替
     'no-extra-parens': 2, // 禁止非必要的括号
     'vue/multi-word-component-names': 0
   }
