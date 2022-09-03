@@ -6,14 +6,33 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('../views/home.vue')
+      redirect: '/adopt'
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/about.vue')
-    }]
+      path: '/adopt',
+      name: 'adopt',
+      component: () => import('../views/adopt.vue'),
+      meta: {
+        title: '领养'
+      }
+    },
+    {
+      path: '/knowledge',
+      name: 'knowledge',
+      component: () => import('../views/knowledge.vue'),
+      meta: {
+        title: '知识'
+      }
+    },
+    {
+      path: '/me',
+      name: 'me',
+      component: () => import('../views/me.vue'),
+      meta: {
+        title: '我的'
+      }
+    }
+  ]
 })
 
 export default router
