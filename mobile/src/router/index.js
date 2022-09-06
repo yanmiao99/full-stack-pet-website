@@ -40,7 +40,16 @@ const router = createRouter({
           }
         }
       ]
-    }]
+    },
+    {
+      path: '/community-article/:id/:title',
+      name: 'community-article',
+      component: () => import('../views/community-article.vue'),
+      meta: {
+        title: '社区文章详情'
+      }
+    }
+  ]
 })
 
 export default router

@@ -84,7 +84,10 @@
 <script setup>
 import BackTop from '../components/back-top.vue'
 import { Toast } from 'vant'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // 搜索
 const searchValue = $ref('')
@@ -96,6 +99,9 @@ const handleSearch = (val) => {
 const handleContentItem = (item) => {
   console.log(item)
   Toast(item.title)
+
+  // 跳转路由
+  router.push(`/community-article/${item.id}/${item.title}`)
 }
 
 // 滚动加载 + 内容
